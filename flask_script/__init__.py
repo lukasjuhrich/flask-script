@@ -12,7 +12,6 @@ from collections import OrderedDict
 import argparse
 
 from flask import Flask
-from flask._compat import text_type
 
 from ._compat import iteritems
 from .commands import Group, Option, Command, Server, Shell
@@ -409,7 +408,6 @@ class Manager(object):
             self._commands.update(commands)
 
         # Make sure all of this is Unicode
-        argv = list(text_type(arg) for arg in sys.argv)
         if default_command is not None and len(argv) == 1:
             argv.append(default_command)
 
